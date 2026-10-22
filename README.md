@@ -50,15 +50,6 @@ The experiment will explore GPU parallelism, simulation rules, and performance o
 
 *Documentation and implementation will be added when this task is completed.*
 
-## Technologies
-
-- C
-- POSIX threads (Pthreads)
-- Linux system programming
-- Atomic operations and lock-free data structures
-- OpenGL ES and EGL
-- GPU compute shaders
-- Performance measurement and analysis
 
 ## Repository Structure
 
@@ -76,12 +67,6 @@ parallel-computing/
     └── README.md
 ```
 
-
-## Development Environment
-
-The CPU-based tasks target Linux and use standard Linux development tools. The GPU simulation targets a compatible graphics environment, depending on the implementation and available hardware.
-
-Refer to each task's README for its specific dependencies, compilation instructions, execution steps, and results.
 
 ## Progress
 
