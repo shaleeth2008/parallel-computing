@@ -1,55 +1,60 @@
 # Parallel Computing
 
-A systems programming project exploring multithreading, lock-free data structures, and GPU-accelerated computation.
+A systems programming project exploring parallel computation, concurrent data structures, and GPU-accelerated simulation.
 
 ## Overview
 
-This repository contains practical implementations and experiments designed to understand parallel programming and performance optimization on modern computing systems.
+This repository contains practical implementations developed to understand parallel programming, concurrency, memory access patterns, and performance optimization.
 
-The project explores workload distribution across CPU threads, synchronization using atomic operations, memory access patterns, and GPU-based computation.
-
-Each task includes its implementation, technical documentation, build instructions, and experimental observations.
+Each task includes its own source code, documentation, execution instructions, and experimental results.
 
 ## Project Tasks
 
 | Task | Description | Status |
 |---|---|---|
 | Task I | Multithreaded array summation using strided and block partitioning | Completed |
-| Task II | Lock-free SPSC ring buffer | Planned |
+| Task II | Lock-free SPSC ring buffer using atomic operations | Implemented; validation ongoing |
 | Task III | GPU-accelerated forest-fire simulation | Planned |
 
 ### Task I — Multithreaded Array Summation
 
-Implement and compare three approaches to summing an array of 64-bit unsigned integers:
+Compare sequential summation with two four-thread approaches: strided partitioning and contiguous block partitioning.
 
-- Single-threaded summation
-- Four-thread strided partitioning
-- Four-thread block partitioning
-
-The experiment examines correctness, execution time, thread management overhead, and the impact of memory access patterns on performance.
+The experiment investigates workload distribution, execution time, and memory access patterns.
 
 **[View Task I Documentation](task1/README.md)**
 
 ### Task II — Lock-Free SPSC Ring Buffer
 
-Implement a fixed-capacity, single-producer single-consumer ring buffer using atomic operations without traditional locking primitives.
+Implement a fixed-capacity, single-producer single-consumer ring buffer using atomic cursors and a power-of-two backing array.
 
-The implementation will explore concurrent data structures, memory ordering, and producer-consumer synchronization.
+The implementation explores:
+
+- Atomic operations and memory ordering.
+- Producer-consumer coordination.
+- Cache alignment and false-sharing considerations.
+- RAII-based access handles.
+- Throughput measurement under concurrent execution.
 
 **[View Task II Documentation](task2/README.md)**
 
-*Documentation and implementation will be added when this task is completed.*
-
 ### Task III — GPU Forest-Fire Simulation
 
-Develop a GPU-accelerated forest-fire simulation on a two-dimensional grid using compute shaders, with a corresponding CPU implementation for comparison.
-
-The experiment will explore GPU parallelism, simulation rules, and performance optimization.
+Develop a GPU-based forest-fire simulation on a two-dimensional grid, with a corresponding CPU implementation for comparison.
 
 **[View Task III Documentation](task3/README.md)**
 
-*Documentation and implementation will be added when this task is completed.*
+*Implementation and experimental results will be added when this task is completed.*
 
+## Technologies
+
+- C and C++
+- POSIX threads
+- C++ atomics and concurrency
+- Linux and WSL
+- OpenGL ES and EGL
+- GPU compute shaders
+- Performance measurement and analysis
 
 ## Repository Structure
 
@@ -60,20 +65,35 @@ parallel-computing/
 │   ├── README.md
 │   ├── main.c
 │   └── screenshots/
-│       └── benchmark-results.png
 ├── task2/
-│   └── README.md
+│   ├── README.md
+│   ├── main.cpp
+│   └── screenshots/
 └── task3/
     └── README.md
 ```
 
+## Project Objectives
+
+- Understand practical parallel programming.
+- Compare sequential and parallel algorithms.
+- Explore atomic operations and concurrent data structures.
+- Investigate memory access patterns and cache behavior.
+- Measure throughput and execution time.
+- Document implementation decisions and performance trade-offs.
+
+## Development Environment
+
+The CPU-based tasks target Linux-compatible environments. The GPU task will require compatible graphics APIs and hardware.
+
+Refer to each task's README for its dependencies, build commands, execution instructions, and results.
 
 ## Progress
 
-Task I has been implemented and tested with three summation strategies.
+Tasks I and II have implementations available in the repository. Their correctness and performance are being evaluated through testing and benchmarking.
 
-Tasks II and III are planned for subsequent development. Their documentation and experimental results will be added as the implementations progress.
+Task III remains planned.
 
 ---
 
-This repository is maintained as a practical exploration of parallel computing and systems programming.
+This repository is an ongoing exploration of parallel computing and systems programming.
