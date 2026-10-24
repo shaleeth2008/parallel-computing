@@ -1,25 +1,3 @@
-// spsc_ring_buffer.cpp
-// Lock-free Single-Producer Single-Consumer ring buffer (C++17).
-//
-// Build:
-//   g++ -std=c++17 -O2 -pthread -Wall -Wextra -o spsc spsc_ring_buffer.cpp
-// ThreadSanitizer build (use -O1, TSan is slow at -O2 on some setups):
-//   g++ -std=c++17 -O1 -g -pthread -fsanitize=thread -o spsc_tsan spsc_ring_buffer.cpp
-//
-// Design rules (explain these in your README):
-//   * Only the PRODUCER ever writes pushCursor_.
-//   * Only the CONSUMER ever writes popCursor_.
-//   * Producer publishes a slot with a RELEASE store to pushCursor_;
-//     consumer sees it with an ACQUIRE load of pushCursor_. This guarantees
-//     the slot's data is visible before the consumer reads it.
-//   * Consumer frees a slot with a RELEASE store to popCursor_; producer sees
-//     it with an ACQUIRE load, so it never overwrites data still being read.
-//   * Each thread reads its OWN cursor with relaxed ordering (nobody else
-//     writes it) and keeps a cached copy of the other side's cursor, so the
-//     shared cache line is only touched when the buffer looks full/empty.
-//   * The four hot variables sit on separate cache lines (alignas(64)) to
-//     avoid false sharing.
-
 #include <atomic>
 #include <chrono>
 #include <cstddef>

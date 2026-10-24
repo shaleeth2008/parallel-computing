@@ -202,37 +202,7 @@ The implementation uses atomic operations and does not use mutexes in its buffer
 
 The use of atomics alone does not establish that every operation is lock-free.
 
-### Benchmark limitations
-
-The included benchmark is an initial experiment rather than a comprehensive comparison.
-
-Further work could include repeated trials, fixed compiler and hardware details, comparisons against a mutex-based queue, and separate measurements for latency and throughput.
-
-## 9. Future Improvements
-
-- Add automated correctness tests.
-- Validate wraparound and full/empty transitions.
-- Review and strengthen move-only RAII handle semantics.
-- Add reproducible benchmark configurations.
-- Measure throughput across different buffer capacities.
-- Compare against a mutex-protected queue.
-- Evaluate latency distributions and sustained throughput.
-- Test across different CPU architectures.
-
-## 10. Key Learnings
-
-This task explores:
-
-- SPSC queue design.
-- Atomic cursors and acquire/release memory ordering.
-- Circular array indexing.
-- Cache alignment and false sharing.
-- C++ RAII and object lifetime.
-- Producer-consumer coordination.
-- Throughput measurement.
-- The difference between using atomics and proving a concurrent algorithm correct.
-
-## 11. Project Context
+## 9. Project Context
 
 This task follows Task I, which compares sequential and multithreaded array summation.
 
